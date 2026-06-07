@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to ParkinsonLife — A New Home for the Parkinson's Community</title>
+<meta name="description" content="ParkinsonLife is a professionally built platform unifying expert resources, tools, and applications for Parkinson's patients, caregivers, and families.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* Blog-specific variables */
+  :root {
+    --lavender: #7b6fa0;
+    --violet:   #5b4e8a;
+    --teal:     #2a9d8f;
+    --teal-lt:  #e8f7f5;
+    --rose:     #e07a7a;
+    --rose-lt:  #fdf0f0;
+    --gold-lt:  #fdf7e8;
+    --sage:     #6b9e7a;
+    --sage-lt:  #eef6f0;
+    --ink:      #1c1c2e;
+    --soft:     #4a4a6a;
+    --muted:    #8888aa;
+    --border-b: #e8e4f0;
+    --lora:     'Lora', serif;
+    --nunito:   'Nunito', sans-serif;
+    --mono:     'JetBrains Mono', monospace;
+  }
+
+  /* ── BLOG HERO ── */
+  .blog-hero {
+    background: linear-gradient(160deg, #f0ecfa 0%, #e8f7f5 50%, #fdf7e8 100%);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .blog-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,78,138,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .blog-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,157,143,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .blog-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 1.5px solid var(--border-b);
+    border-radius: 100px;
+    padding: 0.4rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--violet);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    box-shadow: 0 2px 8px rgba(91,78,138,0.1);
+  }
+
+  .blog-eyebrow::before {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: breathe 2.5s ease-in-out infinite;
+  }
+
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+  }
+
+  .blog-hero h1 {
+    font-family: var(--lora);
+    font-size: clamp(2rem, 5vw, 3.4rem);
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 780px;
+    margin: 0 auto 1.4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .blog-hero h1 em {
+    font-style: italic;
+    color: var(--violet);
+  }
+
+  .blog-hero-sub {
+    font-family: var(--nunito);
+    font-size: 1.08rem;
+    font-weight: 400;
+    color: var(--soft);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+  }
+
+  .blog-hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-family: var(--nunito);
+    font-size: 0.82rem;
+    color: var(--muted);
+    position: relative;
+    z-index: 1;
+  }
+
+  .blog-hero-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .domain-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pill {
+    font-family: var(--nunito);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    letter-spacing: 0.04em;
+  }
+
+  .pill-violet { background: rgba(91,78,138,0.1);  color: var(--violet); border: 1px solid rgba(91,78,138,0.2); }
+  .pill-teal   { background: var(--teal-lt);        color: var(--teal);   border: 1px solid rgba(42,157,143,0.25); }
+  .pill-rose   { background: var(--rose-lt);        color: var(--rose);   border: 1px solid rgba(224,122,122,0.25); }
+  .pill-gold   { background: var(--gold-lt);        color: #b8860b;       border: 1px solid rgba(212,168,67,0.3); }
+  .pill-sage   { background: var(--sage-lt);        color: var(--sage);   border: 1px solid rgba(107,158,122,0.3); }
+
+  /* ── ARTICLE LAYOUT ── */
+  .blog-page {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+    font-family: var(--nunito);
+  }
+
+  /* ── ARTICLE SECTIONS ── */
+  .blog-section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border-b);
+    animation: rise 0.6s ease both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .blog-section:last-of-type { border-bottom: none; }
+
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--teal);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+  }
+
+  .blog-section h2 {
+    font-family: var(--lora);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    line-height: 1.25;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-section h2 em { color: var(--violet); font-style: italic; }
+
+  .blog-section p {
+    font-family: var(--nunito);
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--soft);
+    font-weight: 400;
+    margin-bottom: 1.1rem;
+  }
+
+  .blog-section p strong { color: var(--ink); font-weight: 700; }
+
+  /* ── PULL QUOTE ── */
+  blockquote {
+    margin: 2rem 0;
+    padding: 1.8rem 2rem 1.8rem 2.4rem;
+    background: linear-gradient(135deg, rgba(91,78,138,0.05), rgba(42,157,143,0.05));
+    border-left: 4px solid var(--violet);
+    border-radius: 0 12px 12px 0;
+  }
+
+  blockquote p {
+    font-family: var(--lora);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--violet);
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* ── FEATURE CARDS ── */
+  .blog-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+    margin: 1.8rem 0;
+  }
+
+  .blog-card {
+    background: white;
+    border: 1.5px solid var(--border-b);
+    border-radius: 14px;
+    padding: 1.4rem;
+    transition: box-shadow 0.25s, transform 0.2s, border-color 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .blog-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .blog-card.cv::before { background: linear-gradient(90deg, var(--violet), var(--teal)); }
+  .blog-card.ct::before { background: linear-gradient(90deg, var(--teal), var(--sage)); }
+  .blog-card.cr::before { background: linear-gradient(90deg, var(--rose), #d4a843); }
+  .blog-card.cg::before { background: linear-gradient(90deg, #d4a843, var(--teal)); }
+  .blog-card.cs::before { background: linear-gradient(90deg, var(--sage), var(--violet)); }
+
+  .blog-card:hover {
+    box-shadow: 0 8px 30px rgba(91,78,138,0.12);
+    transform: translateY(-3px);
+    border-color: rgba(91,78,138,0.2);
+  }
+
+  .blog-card-icon { font-size: 1.8rem; margin-bottom: 0.7rem; }
+
+  .blog-card h3 {
+    font-family: var(--lora);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.45rem;
+    line-height: 1.3;
+  }
+
+  .blog-card p {
+    font-family: var(--nunito);
+    font-size: 0.875rem;
+    color: var(--soft);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .card-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    margin-top: 0.7rem;
+  }
+
+  .badge-live  { background: var(--teal-lt);           color: var(--teal); }
+  .badge-build { background: var(--gold-lt);            color: #b8860b; }
+  .badge-soon  { background: rgba(91,78,138,0.1);       color: var(--violet); }
+
+  /* ── APP SPOTLIGHT ── */
+  .app-card {
+    background: white;
+    border: 1.5px solid var(--border-b);
+    border-radius: 16px;
+    padding: 1.6rem 1.8rem;
+    margin: 1.1rem 0;
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.2rem;
+    align-items: start;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .app-card:hover {
+    box-shadow: 0 6px 24px rgba(91,78,138,0.1);
+    transform: translateY(-2px);
+  }
+
+  .app-icon-wrap {
+    width: 3.5rem; height: 3.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+  }
+
+  .icon-diet  { background: linear-gradient(135deg, #e8f7f0, #c8ede0); }
+  .icon-voice { background: linear-gradient(135deg, #f0ecfa, #ddd5f5); }
+  .icon-rx    { background: linear-gradient(135deg, #fdf0f0, #f5d5d5); }
+
+  .app-content h3 {
+    font-family: var(--lora);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .app-content .app-sub {
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-family: var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .app-content p {
+    font-family: var(--nunito);
+    font-size: 0.92rem;
+    color: var(--soft);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── DOMAIN GRID ── */
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+  }
+
+  .domain-tile {
+    background: white;
+    border: 1.5px solid var(--border-b);
+    border-radius: 10px;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    transition: box-shadow 0.2s, transform 0.15s;
+    font-family: var(--nunito);
+  }
+
+  .domain-tile:hover {
+    box-shadow: 0 4px 16px rgba(91,78,138,0.1);
+    transform: translateY(-2px);
+  }
+
+  .domain-tile .d-icon { font-size: 1.4rem; margin-bottom: 0.35rem; }
+
+  .domain-tile p {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--soft);
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-radius: 14px;
+    padding: 1.4rem 1.6rem;
+    margin: 1.8rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-family: var(--nunito);
+  }
+
+  .callout-violet { background: rgba(91,78,138,0.06); border: 1.5px solid rgba(91,78,138,0.18); }
+  .callout-teal   { background: var(--teal-lt);       border: 1.5px solid rgba(42,157,143,0.25); }
+  .callout-rose   { background: var(--rose-lt);       border: 1.5px solid rgba(224,122,122,0.25); }
+
+  .callout-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
+  .callout p { font-size: 0.93rem; line-height: 1.72; margin: 0; color: var(--soft); }
+  .callout p strong { color: var(--ink); }
+
+  /* ── PERSONAL SECTION ── */
+  .personal-card {
+    background: linear-gradient(135deg, #f5f0ff, #eef9f7);
+    border: 1.5px solid rgba(91,78,138,0.18);
+    border-radius: 16px;
+    padding: 2rem 2.2rem;
+    margin: 1.5rem 0;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--nunito);
+  }
+
+  .personal-card::before {
+    content: '❝';
+    position: absolute;
+    top: 0.5rem; right: 1.5rem;
+    font-size: 5rem;
+    color: var(--violet);
+    opacity: 0.08;
+    font-family: var(--lora);
+    line-height: 1;
+  }
+
+  .personal-card p {
+    font-family: var(--lora);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.8;
+    color: var(--violet);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.8rem;
+  }
+
+  .personal-card p:last-child {
+    margin-bottom: 0;
+    font-style: normal;
+    font-weight: 700;
+    color: var(--ink);
+    font-family: var(--nunito);
+    font-size: 0.9rem;
+  }
+
+  /* ── DONATE BANNER ── */
+  .donate-banner {
+    background: linear-gradient(135deg, var(--violet), var(--teal));
+    border-radius: 16px;
+    padding: 2.4rem 2.5rem;
+    margin: 2.5rem 0;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    align-items: center;
+    font-family: var(--nunito);
+  }
+
+  .donate-banner h3 {
+    font-family: var(--lora);
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .donate-banner p {
+    font-size: 0.9rem;
+    opacity: 0.88;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .donate-btn {
+    display: inline-block;
+    background: white;
+    color: var(--violet);
+    font-weight: 800;
+    font-size: 0.88rem;
+    font-family: var(--nunito);
+    text-decoration: none;
+    padding: 0.8rem 1.6rem;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+
+  .donate-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+  /* ── SHARE ── */
+  .share-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.5rem 0;
+    font-family: var(--nunito);
+  }
+
+  .share-label { font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.45rem 1rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: transform 0.15s, opacity 0.2s;
+  }
+
+  .share-btn:hover { transform: translateY(-1px); opacity: 0.85; }
+  .share-fb { background: #1877f2; color: #fff; }
+
+  @media (max-width: 620px) {
+    .blog-card-grid  { grid-template-columns: 1fr; }
+    .domain-grid     { grid-template-columns: repeat(2, 1fr); }
+    .donate-banner   { grid-template-columns: 1fr; text-align: center; }
+    .donate-banner .donate-btn { margin: 0 auto; }
+    .app-card        { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Parkinson<span>Life</span></a>
+  <ul class="nav-links">
+    <li><a href="diet.html">Diet</a></li>
+    <li><a href="parky.html">Parky</a></li>
+    <li><a href="research.html">Research</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contribute.html">Contribute</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="blog-hero">
+  <div class="blog-eyebrow">ParkinsonLife Blog · Launch Announcement</div>
+  <h1>A New Home for the<br><em>Parkinson's Community</em></h1>
+  <p class="blog-hero-sub">One trusted platform bringing together professional resources, tools, and applications across every domain of Parkinson's life — built by someone who lives it.</p>
+  <div class="blog-hero-meta">
+    <span>🗓 June 2026</span>
+    <span>✍ ParkinsonLife Editorial Team</span>
+    <span>⏱ 8 min read</span>
+  </div>
+  <div class="domain-pills">
+    <span class="pill pill-violet">Neurology</span>
+    <span class="pill pill-teal">Nutrition</span>
+    <span class="pill pill-rose">Speech Therapy</span>
+    <span class="pill pill-gold">Medication</span>
+    <span class="pill pill-sage">Mental Health</span>
+    <span class="pill pill-violet">Caregiving</span>
+    <span class="pill pill-teal">Research</span>
+    <span class="pill pill-rose">Exercise</span>
+  </div>
+</div>
+
+<div class="blog-page">
+
+  <!-- INTRO -->
+  <div class="blog-section">
+    <div class="section-label">Welcome</div>
+    <h2>You Deserve Better Than <em>a Dozen Disconnected Websites</em></h2>
+
+    <p>If you or someone you love has been diagnosed with Parkinson's disease, you already know the experience of searching for help online: a medical journal here, an outdated PDF there, a forum post from 2014, a charity website with broken links. Hours of searching. A handful of useful results. And never quite the full picture you need.</p>
+
+    <p><strong>ParkinsonLife was built to change that.</strong> Not as another link directory or a newsletter archive — but as a living, professionally maintained platform that grows with the community it serves, and treats every visitor with the intelligence and respect they deserve.</p>
+
+    <blockquote>
+      <p>The Parkinson's community doesn't need more scattered information. It needs a single, trusted home where knowledge, tools, and support come together — and where the standard never slips.</p>
+    </blockquote>
+
+    <p>We are that home. And we are just getting started.</p>
+  </div>
+
+  <!-- WHY PARKINSONLIFE -->
+  <div class="blog-section">
+    <div class="section-label">The Mission</div>
+    <h2>Why ParkinsonLife — <em>and Why It's Different</em></h2>
+
+    <p>There are excellent organizations doing important work in the Parkinson's space. We respect all of them. But a platform designed to genuinely serve the day-to-day needs of patients, caregivers, and families — one that connects the dots across every domain of Parkinson's life — has been missing. Until now.</p>
+
+    <p>ParkinsonLife is built on a simple belief: <strong>that managing Parkinson's well requires access to expertise across many disciplines, not just one.</strong> Neurology is foundational — but it doesn't exist in isolation. Nutrition affects medication efficacy. Exercise influences motor control. Sleep quality shapes cognitive function. Mental health underpins everything. Caregiving is its own discipline. And navigating the healthcare system requires information that no single specialist typically provides.</p>
+
+    <p>ParkinsonLife pulls all of it together.</p>
+
+    <div class="domain-grid">
+      <div class="domain-tile"><div class="d-icon">🧠</div><p>Neurology &amp; Movement</p></div>
+      <div class="domain-tile"><div class="d-icon">🥗</div><p>Nutrition &amp; Diet</p></div>
+      <div class="domain-tile"><div class="d-icon">🎙️</div><p>Speech &amp; Swallowing</p></div>
+      <div class="domain-tile"><div class="d-icon">💊</div><p>Medications &amp; Timing</p></div>
+      <div class="domain-tile"><div class="d-icon">🧘</div><p>Mental Health</p></div>
+      <div class="domain-tile"><div class="d-icon">🏃</div><p>Exercise &amp; Mobility</p></div>
+      <div class="domain-tile"><div class="d-icon">😴</div><p>Sleep Management</p></div>
+      <div class="domain-tile"><div class="d-icon">🤝</div><p>Caregiver Support</p></div>
+      <div class="domain-tile"><div class="d-icon">🔬</div><p>Clinical Research</p></div>
+    </div>
+
+    <div class="callout callout-teal">
+      <span class="callout-icon">💡</span>
+      <p><strong>Our editorial standard:</strong> Every article on ParkinsonLife is written or reviewed for professional accuracy. We cite sources. We distinguish between what is evidence-based and what is emerging. We update content as research evolves. We never publish content designed to frighten, sell, or mislead.</p>
+    </div>
+  </div>
+
+  <!-- WHAT'S LIVE -->
+  <div class="blog-section">
+    <div class="section-label">What's Available Now</div>
+    <h2>Live Today on <em>ParkinsonLife</em></h2>
+
+    <p>The platform is live and growing every week. Here is what you can access right now at <a href="index.html" style="color:var(--teal);font-weight:700;">parkinsonlife.com</a>:</p>
+
+    <div class="blog-card-grid">
+      <div class="blog-card cv">
+        <div class="blog-card-icon">📰</div>
+        <h3>Professional Articles</h3>
+        <p>Expert-level content spanning every major domain of Parkinson's care — symptoms, treatments, lifestyle, research, and daily management. Written clearly. Sourced carefully.</p>
+        <span class="card-badge badge-live">● Live Now</span>
+      </div>
+      <div class="blog-card ct">
+        <div class="blog-card-icon">🔗</div>
+        <h3>Curated Resource Directory</h3>
+        <p>Hand-vetted links to the most trusted organizations, research institutions, support networks, and clinical resources in the Parkinson's world — organized for fast, confident access.</p>
+        <span class="card-badge badge-live">● Live Now</span>
+      </div>
+      <div class="blog-card cr">
+        <div class="blog-card-icon">👨‍👩‍👧</div>
+        <h3>Caregiver Hub</h3>
+        <p>Dedicated resources for the families and caregivers who do extraordinary work supporting their loved ones — practical guidance, emotional support, and community connections.</p>
+        <span class="card-badge badge-live">● Live Now</span>
+      </div>
+      <div class="blog-card cg">
+        <div class="blog-card-icon">🔬</div>
+        <h3>Research Tracker</h3>
+        <p>Stay current with meaningful developments in Parkinson's research — clinical trials, emerging therapies, and breakthroughs — without wading through academic journals yourself.</p>
+        <span class="card-badge badge-live">● Live Now</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPS BEING BUILT -->
+  <div class="blog-section">
+    <div class="section-label">Applications in Development</div>
+    <h2>Tools Being Built <em>Right Now</em></h2>
+
+    <p>ParkinsonLife isn't just a content platform — it is becoming a suite of practical applications built specifically for the needs of Parkinson's patients. Here is what is currently under active development:</p>
+
+    <div class="app-card">
+      <div class="app-icon-wrap icon-diet">🥗</div>
+      <div class="app-content">
+        <div class="app-sub">Live · Parkinson's Nutrition</div>
+        <h3>Parkinson's Diet Application</h3>
+        <p>Nutrition is one of the most under-discussed and impactful factors in Parkinson's management. This application provides personalized dietary guidance specifically tailored to Parkinson's patients — accounting for levodopa timing, protein interaction, nutrient deficiencies common in Parkinson's, and day-to-day quality-of-life goals. Finally, nutrition advice that understands your condition.</p>
+        <span class="card-badge badge-live">● Live Now</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon-wrap icon-voice">🎙️</div>
+      <div class="app-content">
+        <div class="app-sub">In Development · Voice &amp; Speech</div>
+        <h3>Parky — Voice Therapy Application</h3>
+        <p>Speech and swallowing challenges affect a significant portion of the Parkinson's community, yet access to consistent, professional speech therapy is difficult and expensive for many. Parky is a voice therapy application designed to bring structured speech exercises, vocal strength training, and communication confidence tools directly to patients — from the comfort and privacy of home, on their schedule.</p>
+        <span class="card-badge badge-build">🔨 In Development</span>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon-wrap icon-rx">💊</div>
+      <div class="app-content">
+        <div class="app-sub">In Development · Medication Management</div>
+        <h3>Prescription Scheduler</h3>
+        <p>Medication timing is not just important for Parkinson's patients — it is everything. The difference between taking levodopa 30 minutes early or late can mean hours of dramatically reduced function. This smart scheduling tool is being built to help patients and caregivers manage complex, multi-drug medication routines with precision, reminders, and peace of mind — because no one should have to hold this in their head alone.</p>
+        <span class="card-badge badge-build">🔨 In Development</span>
+      </div>
+    </div>
+
+    <div class="callout callout-violet">
+      <span class="callout-icon">🚀</span>
+      <p><strong>More applications are in planning.</strong> The roadmap includes tools for exercise tracking calibrated to Parkinson's motor patterns, sleep quality monitoring, symptom journaling with trend analysis, and care coordination tools for families managing care across multiple providers. ParkinsonLife is being built to grow with you.</p>
+    </div>
+  </div>
+
+  <!-- PERSONAL NOTE -->
+  <div class="blog-section">
+    <div class="section-label">From the Founder</div>
+    <h2>Built From the <em>Inside Out</em></h2>
+
+    <p>ParkinsonLife wasn't built by a team that researched Parkinson's and decided to build a website about it. It was built by someone who lives with it every day.</p>
+
+    <div class="personal-card">
+      <p>I was diagnosed with Parkinson's Dysautonomia. I know what it feels like to search for answers at 2am. I know the frustration of getting different information from different doctors. I know how isolating it can be to try to piece together a picture of your own condition from fragments scattered across the internet.</p>
+      <p>I also know what it is like to keep building — to take breaks, to push through, to refuse to let a diagnosis define what is possible. Over the past few days alone, what has been built here is something I am genuinely, deeply proud of. And I am building more as you read this.</p>
+      <p>— ParkinsonLife was built for you, because I am you.</p>
+    </div>
+
+    <p>The platform is powered by ADC Risk Horizon, which volunteers 100% of its engineering, infrastructure, and development expertise to ParkinsonLife. Every technical decision — from security and global reliability to design and application architecture — is made to the same professional standard we apply in enterprise engagements. Because the Parkinson's community deserves nothing less.</p>
+  </div>
+
+  <!-- TECHNICAL FOUNDATION -->
+  <div class="blog-section">
+    <div class="section-label">Built to Last</div>
+    <h2>A Platform You Can <em>Trust to Be There</em></h2>
+
+    <p>We know that trust is earned, not declared. Part of earning it is being transparent about how this platform is built and maintained.</p>
+
+    <div class="blog-card-grid">
+      <div class="blog-card ct">
+        <div class="blog-card-icon">🌍</div>
+        <h3>Globally Available</h3>
+        <p>ParkinsonLife runs on a globally distributed infrastructure — available to patients and caregivers around the world, reliably and fast, regardless of location.</p>
+      </div>
+      <div class="blog-card cv">
+        <div class="blog-card-icon">🔒</div>
+        <h3>Secure &amp; Private</h3>
+        <p>Your privacy matters. The platform is built with security at every layer. No selling of data. No advertising. No compromises on how your information is handled.</p>
+      </div>
+      <div class="blog-card cs">
+        <div class="blog-card-icon">🛠️</div>
+        <h3>Professionally Maintained</h3>
+        <p>This isn't a volunteer blog that goes dark when life gets busy. ParkinsonLife is maintained like a production enterprise application — updated, monitored, and kept current.</p>
+      </div>
+      <div class="blog-card cr">
+        <div class="blog-card-icon">📣</div>
+        <h3>Ad-Free, Always</h3>
+        <p>No advertisements. No sponsored content masquerading as articles. No affiliate links influencing recommendations. Just honest, independent information.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DONATE -->
+  <div class="donate-banner">
+    <div>
+      <h3>❤️ Support ParkinsonLife</h3>
+      <p>ADC Risk Horizon donates 100% of development and maintenance time. Your donations fund the production infrastructure and software that keep this platform running reliably for the community. A 501(c)(3) nonprofit is being established — every dollar fully accounted for and put to work.</p>
+    </div>
+    <a href="https://gofund.me/b80b8a4c8" target="_blank" class="donate-btn">Donate on GoFundMe →</a>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <div class="blog-section" style="border-bottom:none;">
+    <div class="section-label">Get Involved</div>
+    <h2>Join Us. Share This. <em>Help Us Reach Everyone Who Needs It.</em></h2>
+
+    <p>If ParkinsonLife would help someone you know — a patient, a caregiver, a family member navigating a new diagnosis — please share it. Every share helps us reach someone who may be searching for exactly what we've built.</p>
+
+    <p>If you run a Parkinson's support group and would like to collaborate — whether listing your group in our resource directory, sharing our articles with your members, or contributing expertise — we would love to hear from you. Reach out directly through our <a href="contribute.html" style="color:var(--teal);font-weight:700;">Contribute page</a>.</p>
+
+    <p>ParkinsonLife is for the whole community. The more voices that shape it, the better it becomes.</p>
+
+    <div class="share-row">
+      <span class="share-label">Share this post:</span>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=https://parkinsonlife.com/blog.html" target="_blank" class="share-btn share-fb">📘 Share on Facebook</a>
+    </div>
+
+    <div class="callout callout-teal" style="margin-top:1rem;">
+      <span class="callout-icon">🌿</span>
+      <p><strong>You are not alone.</strong> Whether you were diagnosed yesterday or have been living with Parkinson's for years — there is a community here, and a platform that will keep getting better, for you.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Parkinson<span>Life</span></div>
+    <p>A platform by <a href="https://adcriskhorizon.com" target="_blank">ADC Risk Horizon</a> · Volunteered with purpose for the Parkinson's community</p>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="contribute.html">Contribute</a>
+      <a href="https://gofund.me/b80b8a4c8" target="_blank">Donate ❤️</a>
+    </div>
+    <p class="footer-copy">© 2026 ParkinsonLife · 501(c)(3) nonprofit organization pending · All rights reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

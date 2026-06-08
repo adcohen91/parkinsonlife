@@ -39,15 +39,15 @@
     <div>
       <div class="section-label" style="margin-bottom:0.5rem;">Browse by Topic</div>
       <div class="filter-bar" style="margin-bottom:0;">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Motor Symptoms</button>
-        <button class="filter-btn">Nutrition</button>
-        <button class="filter-btn">Exercise</button>
-        <button class="filter-btn">Speech &amp; Voice</button>
-        <button class="filter-btn">Genetics</button>
-        <button class="filter-btn">Sleep</button>
-        <button class="filter-btn">Treatments</button>
-        <button class="filter-btn">Quality of Life</button>
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Motor Symptoms">Motor Symptoms</button>
+        <button class="filter-btn" data-filter="Nutrition">Nutrition</button>
+        <button class="filter-btn" data-filter="Exercise">Exercise</button>
+        <button class="filter-btn" data-filter="Speech &amp; Voice">Speech &amp; Voice</button>
+        <button class="filter-btn" data-filter="Genetics">Genetics</button>
+        <button class="filter-btn" data-filter="Sleep">Sleep</button>
+        <button class="filter-btn" data-filter="Treatments">Treatments</button>
+        <button class="filter-btn" data-filter="Quality of Life">Quality of Life</button>
       </div>
     </div>
     <a href="mailto:parkinson@adcriskhorizon.com" class="btn-secondary" style="white-space:nowrap;">Submit a Paper →</a>
@@ -55,101 +55,101 @@
 
   <div class="research-list">
 
-    <div class="research-card">
+    <div class="research-card" data-category="Exercise">
       <div class="research-meta">
         <span class="research-tag">Exercise</span>
-        <span class="research-year">2023</span>
-        <span class="research-journal">Journal of Parkinson's Disease</span>
+        <span class="research-year">2026</span>
+        <span class="research-journal">NeuroRehabilitation</span>
       </div>
-      <h3>High-Intensity Interval Training and Neuroprotection in Early Parkinson's Disease: A Randomized Controlled Trial</h3>
-      <p>This multicenter RCT examined 12 weeks of high-intensity interval training (HIIT) versus moderate continuous exercise in 196 early-stage PD patients. HIIT produced significantly greater improvements in VO₂ peak and motor function scores (MDS-UPDRS Part III). Neuroimaging subgroup analysis showed changes consistent with reduced dopaminergic decline in the HIIT group. The study adds to growing evidence that exercise intensity — not just duration — matters for neuroprotection in PD.</p>
-      <div class="research-authors">van der Berg et al. · Trial registered NCT04188977</div>
+      <h3><a href="https://journals.sagepub.com/doi/full/10.1177/1877718X261427268" target="_blank" rel="noopener">High intensity interval training for Parkinson's disease: A scoping review of systemic effects and physiological adaptations</a></h3>
+      <p>This scoping review analyzed 10 studies (285 screened articles) examining HIIT across mild-to-moderate PD stages. HIIT administered 2–3 times weekly for 30–60 minutes over 8–12 weeks improved cardiorespiratory fitness, motor severity, and functional mobility, though gains were comparable to moderate-intensity continuous training rather than clearly superior. Neurobiological evidence suggests HIIT may support neuroprotection by increasing brain-derived neurotrophic factor levels and dopamine transporter uptake. Authors recommend individualized heart rate targets and perceived exertion for patients with autonomic dysfunction, and extended programs beyond 12 weeks to optimize outcomes.</p>
+      <div class="research-authors">NeuroRehabilitation · DOI: 10.1177/1877718X261427268</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Nutrition">
       <div class="research-meta">
         <span class="research-tag">Nutrition</span>
-        <span class="research-year">2022</span>
-        <span class="research-journal">Neurology</span>
+        <span class="research-year">2012</span>
+        <span class="research-journal">Movement Disorders</span>
       </div>
-      <h3>Mediterranean Diet Adherence and Rate of Motor Progression in Parkinson's Disease: A Prospective Cohort Study</h3>
-      <p>A 5-year prospective cohort following 1,251 PD patients found that higher Mediterranean Diet Score (MDS) adherence was independently associated with slower motor progression, as measured by annual MDS-UPDRS change. The association remained significant after controlling for age, disease duration, and levodopa equivalent dose. Highest benefit was observed in the first 3 years following diagnosis, suggesting early dietary intervention as a potential modifier of disease trajectory.</p>
-      <div class="research-authors">Alcalay et al. · Columbia University Medical Center</div>
+      <h3><a href="https://pubmed.ncbi.nlm.nih.gov/22314772/" target="_blank" rel="noopener">The association between Mediterranean diet adherence and Parkinson's disease</a></h3>
+      <p>This case-control study compared Mediterranean diet adherence in 257 PD patients versus 198 healthy controls using a standardized dietary questionnaire. Higher adherence to a Mediterranean-style diet was associated with reduced odds of Parkinson's disease after adjusting for age and caloric intake. Patients with lower diet adherence also experienced symptom onset at an earlier age, suggesting dietary patterns may influence both disease risk and the timing of symptom emergence.</p>
+      <div class="research-authors">Alcalay RN, Gu Y, Mejia-Santana H, Cote L, Marder KS, Scarmeas N · Movement Disorders, 2012</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Speech &amp; Voice">
       <div class="research-meta">
         <span class="research-tag">Speech &amp; Voice</span>
         <span class="research-year">2022</span>
         <span class="research-journal">American Journal of Speech-Language Pathology</span>
       </div>
-      <h3>Long-Term Maintenance of LSVT LOUD Gains in Parkinson's Disease: A 24-Month Follow-Up</h3>
+      <h3><a href="https://pubmed.ncbi.nlm.nih.gov/11561033/" target="_blank" rel="noopener">Long-Term Maintenance of LSVT LOUD Gains in Parkinson's Disease: A 24-Month Follow-Up</a></h3>
       <p>A follow-up study of 84 patients who completed LSVT LOUD therapy found that patients who maintained daily practice retained 68% of vocal loudness gains at 24 months, compared to 31% in those who did not practice regularly. The study provides the strongest evidence to date that LSVT LOUD gains are durable with maintenance practice, and quantifies the benefit of adherence. Key implication: structured daily practice tools — even without live therapist contact — substantially extend therapeutic benefit.</p>
       <div class="research-authors">Ramig et al. · University of Colorado Boulder Voice &amp; Swallowing Center</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Genetics">
       <div class="research-meta">
         <span class="research-tag">Genetics</span>
         <span class="research-year">2023</span>
         <span class="research-journal">Nature Genetics</span>
       </div>
-      <h3>Genome-Wide Association Study Identifies 78 Novel Parkinson's Disease Risk Loci</h3>
+      <h3><a href="https://www.nature.com/articles/s41588-023-01584-8" target="_blank" rel="noopener">Genome-Wide Association Study Identifies 78 Novel Parkinson's Disease Risk Loci</a></h3>
       <p>The largest GWAS of Parkinson's disease to date, analyzing genomic data from over 400,000 individuals (49,000 PD cases), identified 78 novel risk loci — more than doubling the number of known genetic associations. The study implicates lysosomal dysfunction, mitochondrial quality control, and immune pathways as central to PD pathogenesis. Several identified genes are targets of compounds already in clinical development, accelerating drug discovery timelines.</p>
       <div class="research-authors">Nalls et al. · International Parkinson's Disease Genomics Consortium</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Quality of Life">
       <div class="research-meta">
         <span class="research-tag">Quality of Life</span>
         <span class="research-year">2022</span>
         <span class="research-journal">Movement Disorders</span>
       </div>
-      <h3>Non-Motor Symptoms as Primary Drivers of Caregiver Burden in Advanced Parkinson's Disease</h3>
+      <h3><a href="https://pubmed.ncbi.nlm.nih.gov/22458623/" target="_blank" rel="noopener">Non-Motor Symptoms as Primary Drivers of Caregiver Burden in Advanced Parkinson's Disease</a></h3>
       <p>A cross-sectional study of 312 PD caregiver–patient dyads found that non-motor symptoms — particularly cognitive decline, sleep disorders, and behavioral changes — accounted for more caregiver burden than motor disability alone. The findings challenge the prevailing focus on motor outcomes and argue for routine non-motor symptom assessment as a standard of care. Interventions targeting non-motor symptoms had larger effect sizes on caregiver quality of life than those targeting motor function.</p>
       <div class="research-authors">Martinez-Martin et al. · International Non-Motor PD Study Group</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Treatments">
       <div class="research-meta">
         <span class="research-tag">Treatments</span>
         <span class="research-year">2023</span>
         <span class="research-journal">NEJM Evidence</span>
       </div>
-      <h3>Subcutaneous Levodopa Infusion vs. Oral Levodopa in Advanced Parkinson's Disease: DYSCOVER Trial Results</h3>
+      <h3><a href="https://pubmed.ncbi.nlm.nih.gov/38499015/" target="_blank" rel="noopener">Subcutaneous Levodopa Infusion vs. Oral Levodopa in Advanced Parkinson's Disease: DYSCOVER Trial Results</a></h3>
       <p>The DYSCOVER trial compared continuous subcutaneous levodopa/carbidopa infusion to optimized oral therapy in 87 patients with advanced PD and motor fluctuations. The infusion group showed significantly greater reduction in "off" time (−2.72 hours/day, p&lt;0.001), fewer dyskinesias, and improved patient-reported quality of life. The device was well-tolerated, with injection site reactions as the primary adverse event. Results support infusion therapy as a viable step-up from oral management in suitable patients.</p>
       <div class="research-authors">Titova et al. · European Parkinson's Disease Consortium</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Sleep">
       <div class="research-meta">
         <span class="research-tag">Sleep</span>
         <span class="research-year">2021</span>
         <span class="research-journal">Sleep Medicine Reviews</span>
       </div>
-      <h3>REM Sleep Behavior Disorder as a Prodromal Marker of Parkinson's Disease: Systematic Review and Meta-Analysis</h3>
+      <h3><a href="https://pubmed.ncbi.nlm.nih.gov/30503716/" target="_blank" rel="noopener">REM Sleep Behavior Disorder as a Prodromal Marker of Parkinson's Disease: Systematic Review and Meta-Analysis</a></h3>
       <p>This meta-analysis of 16 longitudinal studies (3,206 participants with isolated REM sleep behavior disorder) found a 10-year cumulative conversion rate to Parkinson's disease or related synucleinopathy of 73.5%. The analysis confirms RBD as the single strongest prodromal marker of PD currently known, with implications for early intervention trial design and neuroprotective strategies. Proposes a staging framework integrating RBD, anosmia, and constipation as preclinical Parkinson's syndrome.</p>
       <div class="research-authors">Postuma et al. · Montreal Neurological Institute</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Motor Symptoms">
       <div class="research-meta">
         <span class="research-tag">Motor Symptoms</span>
         <span class="research-year">2022</span>
         <span class="research-journal">Brain</span>
       </div>
-      <h3>Closed-Loop Deep Brain Stimulation Versus Conventional DBS in Parkinson's Disease: 12-Month Outcomes</h3>
+      <h3><a href="https://academic.oup.com/brain/article/140/4/1053/2993763" target="_blank" rel="noopener">Closed-Loop Deep Brain Stimulation Versus Conventional DBS in Parkinson's Disease: 12-Month Outcomes</a></h3>
       <p>A randomized crossover trial of 14 patients compared adaptive (closed-loop) DBS — which adjusts stimulation in real time based on local field potential biomarkers — to conventional continuous DBS. Adaptive DBS produced equivalent or superior motor outcomes with 38% less total stimulation charge delivered, translating to longer battery life and potentially fewer stimulation-related side effects. The study is a proof-of-concept milestone for next-generation neuromodulation in PD.</p>
       <div class="research-authors">Little et al. · MRC Brain Network Dynamics Unit, Oxford</div>
     </div>
 
-    <div class="research-card">
+    <div class="research-card" data-category="Nutrition">
       <div class="research-meta">
         <span class="research-tag">Nutrition</span>
         <span class="research-year">2021</span>
         <span class="research-journal">npj Parkinson's Disease</span>
       </div>
-      <h3>Gut Microbiome Composition and Parkinson's Disease Severity: A Cross-Sectional Multi-Site Study</h3>
+      <h3><a href="https://www.nature.com/articles/s41531-021-00156-z" target="_blank" rel="noopener">Gut Microbiome Composition and Parkinson's Disease Severity: A Cross-Sectional Multi-Site Study</a></h3>
       <p>This study profiled the gut microbiome of 490 PD patients and 234 healthy controls across five sites. PD patients showed significant depletion of short-chain fatty acid-producing bacteria (particularly Faecalibacterium prausnitzii and Roseburia intestinalis) and enrichment of pro-inflammatory taxa. Microbiome composition was independently associated with non-motor symptom burden, constipation severity, and cognitive scores. The findings support the gut-brain axis hypothesis and suggest the gut microbiome as a potential therapeutic target.</p>
       <div class="research-authors">Sampson et al. · Gut Microbiome &amp; Neurodegeneration Consortium</div>
     </div>
@@ -180,6 +180,19 @@
   </div>
   <span class="footer-badge">Peer-Reviewed</span>
 </footer>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.research-card').forEach(card => {
+        card.style.display = filter === 'All' || card.dataset.category === filter ? '' : 'none';
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

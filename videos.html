@@ -39,14 +39,15 @@
     <div>
       <div class="section-label" style="margin-bottom:0.5rem;">Browse by Topic</div>
       <div class="filter-bar" style="margin-bottom:0;">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Motor Symptoms</button>
-        <button class="filter-btn">Nutrition</button>
-        <button class="filter-btn">Exercise</button>
-        <button class="filter-btn">Voice Therapy</button>
-        <button class="filter-btn">Medications</button>
-        <button class="filter-btn">Caregiving</button>
-        <button class="filter-btn">Research</button>
+        <button class="filter-btn active" data-filter="All">All</button>
+        <button class="filter-btn" data-filter="Motor Symptoms">Motor Symptoms</button>
+        <button class="filter-btn" data-filter="Nutrition">Nutrition</button>
+        <button class="filter-btn" data-filter="Exercise">Exercise</button>
+        <button class="filter-btn" data-filter="Voice Therapy">Voice Therapy</button>
+        <button class="filter-btn" data-filter="Medications">Medications</button>
+        <button class="filter-btn" data-filter="Caregiving">Caregiving</button>
+        <button class="filter-btn" data-filter="Research">Research</button>
+        <button class="filter-btn" data-filter="Dysautonomia">Dysautonomia</button>
       </div>
     </div>
     <a href="mailto:parkinson@adcriskhorizon.com" class="btn-secondary" style="white-space:nowrap;">Submit a Video →</a>
@@ -54,8 +55,8 @@
 
   <div class="video-grid">
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Motor Symptoms">
+      <a href="https://www.youtube.com/watch?v=LgDtyXm7kYQ" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/LgDtyXm7kYQ/hqdefault.jpg" alt="Understanding Tremor vs. Dyskinesia" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Motor Symptoms</span>
         <div class="video-title">Understanding Tremor vs. Dyskinesia</div>
@@ -63,8 +64,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Nutrition">
+      <a href="https://www.youtube.com/watch?v=gynaGSZoR-8" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/gynaGSZoR-8/hqdefault.jpg" alt="Protein Timing &amp; Levodopa Absorption" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Nutrition</span>
         <div class="video-title">Protein Timing &amp; Levodopa Absorption</div>
@@ -72,8 +73,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Voice Therapy">
+      <a href="https://www.youtube.com/watch?v=hJUHjpStxFQ" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/hJUHjpStxFQ/hqdefault.jpg" alt="LSVT LOUD: What the Research Shows" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Voice Therapy</span>
         <div class="video-title">LSVT LOUD: What the Research Shows</div>
@@ -81,8 +82,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Dysautonomia">
+      <a href="https://www.youtube.com/watch?v=Z54ncPQW5Js" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/Z54ncPQW5Js/hqdefault.jpg" alt="Autonomic Dysfunction in Parkinson's" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Dysautonomia</span>
         <div class="video-title">Autonomic Dysfunction in Parkinson's</div>
@@ -90,8 +91,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Exercise">
+      <a href="https://www.youtube.com/watch?v=Cs3FDHJenY4" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/Cs3FDHJenY4/hqdefault.jpg" alt="Neuroprotective Exercise: Current Evidence" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Exercise</span>
         <div class="video-title">Neuroprotective Exercise: Current Evidence</div>
@@ -99,8 +100,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Caregiving">
+      <a href="https://www.youtube.com/watch?v=zPnjyHvOGjw" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/zPnjyHvOGjw/hqdefault.jpg" alt="Supporting a Loved One: A Caregiver's Guide" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Caregiving</span>
         <div class="video-title">Supporting a Loved One: A Caregiver's Guide</div>
@@ -108,8 +109,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Medications">
+      <a href="https://www.youtube.com/watch?v=dBJNgZG2V-c" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/dBJNgZG2V-c/hqdefault.jpg" alt="Levodopa Optimization: Managing Motor Fluctuations" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Medications</span>
         <div class="video-title">Levodopa Optimization: Managing Motor Fluctuations</div>
@@ -117,8 +118,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Exercise">
+      <a href="https://www.youtube.com/watch?v=qp_bV56SHlg" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/qp_bV56SHlg/hqdefault.jpg" alt="Boxing and Balance Training for PD" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Exercise</span>
         <div class="video-title">Boxing and Balance Training for PD</div>
@@ -126,8 +127,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Research">
+      <a href="https://www.youtube.com/watch?v=Gz_zS0MS76Q" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/Gz_zS0MS76Q/hqdefault.jpg" alt="Alpha-Synuclein &amp; the Gut-Brain Axis" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Research</span>
         <div class="video-title">Alpha-Synuclein &amp; the Gut-Brain Axis</div>
@@ -135,8 +136,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Motor Symptoms">
+      <a href="https://www.youtube.com/watch?v=NFc7mFTt2Sk" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/NFc7mFTt2Sk/hqdefault.jpg" alt="Freezing of Gait: Strategies That Work" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Motor Symptoms</span>
         <div class="video-title">Freezing of Gait: Strategies That Work</div>
@@ -144,8 +145,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Voice Therapy">
+      <a href="https://www.youtube.com/watch?v=AHlSjkjkmd8" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/AHlSjkjkmd8/hqdefault.jpg" alt="Daily Voice Exercises You Can Do at Home" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Voice Therapy</span>
         <div class="video-title">Daily Voice Exercises You Can Do at Home</div>
@@ -153,8 +154,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Caregiving">
+      <a href="https://www.youtube.com/watch?v=uHg8p85WE9A" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/uHg8p85WE9A/hqdefault.jpg" alt="Advance Care Planning for PD Families" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Caregiving</span>
         <div class="video-title">Advance Care Planning for PD Families</div>
@@ -162,8 +163,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Nutrition">
+      <a href="https://www.youtube.com/watch?v=Gs356zrtwms" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/Gs356zrtwms/hqdefault.jpg" alt="The Mediterranean Diet &amp; Parkinson's: Evidence Review" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Nutrition</span>
         <div class="video-title">The Mediterranean Diet &amp; Parkinson's: Evidence Review</div>
@@ -171,8 +172,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Research">
+      <a href="https://www.youtube.com/watch?v=cHSCGnbahnY" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/cHSCGnbahnY/hqdefault.jpg" alt="Deep Brain Stimulation: Patient Selection &amp; Outcomes" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Research</span>
         <div class="video-title">Deep Brain Stimulation: Patient Selection &amp; Outcomes</div>
@@ -180,8 +181,8 @@
       </div>
     </div>
 
-    <div class="video-card">
-      <div class="video-thumb"><div class="play-btn"></div></div>
+    <div class="video-card" data-category="Medications">
+      <a href="https://www.youtube.com/watch?v=96hesFnAxhQ" target="_blank" rel="noopener" class="video-thumb"><img src="https://img.youtube.com/vi/96hesFnAxhQ/hqdefault.jpg" alt="Understanding Off Periods &amp; Wearing Off" /><div class="play-btn"></div></a>
       <div class="video-info">
         <span class="video-category">Medications</span>
         <div class="video-title">Understanding Off Periods &amp; Wearing Off</div>
@@ -222,6 +223,19 @@
   </div>
   <span class="footer-badge">Evidence-Based</span>
 </footer>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.video-card').forEach(card => {
+        card.style.display = filter === 'All' || card.dataset.category === filter ? '' : 'none';
+      });
+    });
+  });
+</script>
 
 </body>
 </html>

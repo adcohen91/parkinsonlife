@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ParkinsonLife — Science-First Resource Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #f4f0eb;
+    --deep: #ede8e1;
+    --sky: #2e6b9e;
+    --gold: #a0722a;
+    --gold-light: #c49240;
+    --mist: #2c3e55;
+    --white: #1a2535;
+    --text: #3d4f62;
+    --subtle: #7a8fa3;
+  }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(46,107,158,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 80%, rgba(160,114,42,0.05) 0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8rem 2.5rem;
+    border-bottom: 1px solid rgba(46,107,158,0.15);
+    position: relative;
+    z-index: 10;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--white);
+  }
+  .logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--subtle);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--sky); }
+
+  .hero {
+    padding: 6rem 2.5rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.12;
+    color: var(--white);
+    margin-bottom: 1.6rem;
+  }
+  h1 em { font-style: italic; color: var(--sky); }
+
+  .hero-body {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 0.75rem 1.8rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-secondary {
+    color: var(--sky);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(168,196,224,0.3);
+    padding-bottom: 2px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+
+  .hero-visual {
+    position: relative;
+    height: 340px;
+  }
+
+  .circle-outer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(46,107,158,0.2);
+    animation: rotate 30s linear infinite;
+  }
+  .circle-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px dashed rgba(160,114,42,0.25);
+    animation: rotate 15s linear infinite reverse;
+  }
+  .circle-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,107,158,0.1) 0%, transparent 70%);
+    border: 1px solid rgba(46,107,158,0.2);
+  }
+  .orbit-dot {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    top: -4px;
+    left: calc(50% - 4px);
+    box-shadow: 0 0 10px rgba(160,114,42,0.4);
+  }
+  .orbit-dot-2 {
+    background: var(--sky);
+    width: 6px;
+    height: 6px;
+    top: auto;
+    bottom: -3px;
+    left: calc(50% - 3px);
+    box-shadow: 0 0 10px rgba(46,107,158,0.4);
+  }
+  .hero-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .hero-label-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+  .hero-label-sub {
+    font-size: 0.68rem;
+    color: var(--subtle);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  @keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(46,107,158,0.12);
+    margin: 0 2.5rem;
+  }
+
+  .mission {
+    padding: 4rem 2.5rem;
+  }
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .mission-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--mist);
+    max-width: 780px;
+  }
+  .mission-text strong { color: var(--white); font-weight: 600; }
+
+  .apps-section {
+    padding: 4rem 2.5rem;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+  }
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5px;
+    background: rgba(46,107,158,0.1);
+    border: 1px solid rgba(46,107,158,0.1);
+  }
+  .app-card {
+    background: var(--deep);
+    padding: 2rem;
+    transition: background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .app-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .app-card:hover { background: rgba(255,252,248,0.95); }
+  .app-card:hover::after { transform: scaleX(1); }
+
+  .app-tag {
+    display: inline-block;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(160,114,42,0.1);
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .app-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+  }
+  .app-desc {
+    font-size: 0.82rem;
+    color: var(--subtle);
+    line-height: 1.65;
+  }
+  .badge-dev {
+    display: inline-block;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sky);
+    border: 1px solid rgba(46,107,158,0.3);
+    padding: 0.18rem 0.5rem;
+    margin-top: 0.8rem;
+  }
+
+  .pillars {
+    padding: 4rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .pillar-text p {
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .pillar-list { list-style: none; }
+  .pillar-list li {
+    padding: 1rem 0;
+    border-top: 1px solid rgba(46,107,158,0.1);
+    font-size: 0.85rem;
+    color: var(--subtle);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .pillar-list li:last-child { border-bottom: 1px solid rgba(46,107,158,0.1); }
+  .pillar-list li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+  .pillar-list strong { color: var(--mist); display: block; margin-bottom: 0.2rem; }
+
+  .contribute {
+    margin: 0 2.5rem 4rem;
+    border: 1px solid rgba(46,107,158,0.15);
+    padding: 3rem;
+    background: rgba(237,232,225,0.7);
+    position: relative;
+    overflow: hidden;
+  }
+  .contribute::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+  }
+  .contribute-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1rem;
+  }
+  .contribute-body {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 1.8rem;
+  }
+  .contribute-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+  }
+  .tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(46,107,158,0.2);
+    color: var(--sky);
+  }
+
+  footer {
+    border-top: 1px solid rgba(46,107,158,0.12);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-note { font-size: 0.72rem; color: var(--subtle); }
+  .footer-badge {
+    font-size: 0.68rem;
+    color: var(--subtle);
+    border: 1px solid rgba(46,107,158,0.2);
+    padding: 0.3rem 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* PLATFORM STATUS */
+  .platform-status {
+    background: var(--deep);
+    border-top: 1px solid rgba(46,107,158,0.15);
+    border-bottom: 1px solid rgba(46,107,158,0.15);
+    padding: 3rem 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .platform-status-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .platform-status-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .platform-status-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .overall-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #2e8b57;
+    background: rgba(46,139,87,0.1);
+    border: 1px solid rgba(46,139,87,0.25);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+  }
+  .overall-status-pill .pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #3ecf6e;
+    box-shadow: 0 0 0 0 rgba(62,207,110,0.5);
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(62,207,110,0.5); }
+    70%  { box-shadow: 0 0 0 6px rgba(62,207,110,0); }
+    100% { box-shadow: 0 0 0 0 rgba(62,207,110,0); }
+  }
+  .status-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(46,107,158,0.1);
+    border: 1px solid rgba(46,107,158,0.1);
+    margin-bottom: 1.5rem;
+  }
+  .status-card {
+    background: var(--navy);
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .status-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .status-card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--subtle);
+  }
+  .status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .status-indicator.green { color: #3ecf6e; }
+  .status-indicator.blue  { color: var(--sky); }
+  .status-indicator.gold  { color: var(--gold); }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .status-dot.green { background: #3ecf6e; box-shadow: 0 0 6px rgba(62,207,110,0.6); }
+  .status-dot.blue  { background: var(--sky); box-shadow: 0 0 6px rgba(46,107,158,0.5); }
+  .status-dot.gold  { background: var(--gold); box-shadow: 0 0 6px rgba(160,114,42,0.4); }
+  .status-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+  }
+  .status-card-sub {
+    font-size: 0.7rem;
+    color: var(--subtle);
+  }
+  .status-infra-row {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(46,107,158,0.1);
+  }
+  .status-infra-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--subtle);
+    letter-spacing: 0.04em;
+  }
+  .status-infra-item svg {
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  /* NONPROFIT SECTION */
+  .nonprofit {
+    padding: 4rem 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .nonprofit-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    line-height: 1.25;
+  }
+  .nonprofit-left p {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.85;
+    margin-bottom: 0.9rem;
+  }
+  .board-block {
+    background: rgba(237,232,225,0.8);
+    border: 1px solid rgba(46,107,158,0.12);
+    padding: 2rem;
+  }
+  .board-block-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .board-roles {
+    list-style: none;
+  }
+  .board-roles li {
+    padding: 0.85rem 0;
+    border-top: 1px solid rgba(46,107,158,0.08);
+    font-size: 0.82rem;
+    color: var(--subtle);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .board-roles li:last-child { border-bottom: 1px solid rgba(46,107,158,0.08); }
+  .board-roles li .role-icon { color: var(--gold); flex-shrink: 0; font-size: 0.9rem; }
+  .board-roles strong { color: var(--mist); display: block; font-size: 0.78rem; margin-bottom: 0.15rem; }
+
+  /* VOLUNTEER SECTION */
+  .volunteer {
+    margin: 0 2.5rem 1.5rem;
+    background: linear-gradient(135deg, rgba(46,107,158,0.06) 0%, rgba(160,114,42,0.04) 100%);
+    border: 1px solid rgba(46,107,158,0.15);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .volunteer::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(160,114,42,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .volunteer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .volunteer-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 0.8rem;
+  }
+  .volunteer-body {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    max-width: 520px;
+  }
+  .volunteer-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .volunteer-cta {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .volunteer-cta .email-link {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--sky);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-top: 0.8rem;
+    border-bottom: 1px solid rgba(46,107,158,0.3);
+    padding-bottom: 2px;
+    transition: color 0.3s;
+    word-break: break-all;
+  }
+  .volunteer-cta .email-link:hover { color: var(--white); }
+  .caregiver-note {
+    font-size: 0.7rem;
+    color: var(--subtle);
+    margin-top: 0.5rem;
+    font-style: italic;
+    text-align: center;
+  }
+
+  /* VIDEO SECTION */
+  .video-section {
+    padding: 4rem 2.5rem;
+  }
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2rem;
+  }
+  .video-card {
+    background: var(--deep);
+    border: 1px solid rgba(46,107,158,0.12);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .video-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(46,107,158,0.1);
+  }
+  .video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, rgba(46,107,158,0.15) 0%, rgba(160,114,42,0.08) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .video-thumb::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, rgba(237,232,225,0.3) 100%);
+  }
+  .play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(160,114,42,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .video-card:hover .play-btn {
+    background: var(--gold);
+    transform: scale(1.1);
+  }
+  .play-btn::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px 0 7px 13px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 3px;
+  }
+  .video-category {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: rgba(160,114,42,0.08);
+    display: inline-block;
+    padding: 0.15rem 0.45rem;
+    margin-bottom: 0.5rem;
+  }
+  .video-info {
+    padding: 1.1rem;
+  }
+  .video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--white);
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+  }
+  .video-meta {
+    font-size: 0.72rem;
+    color: var(--subtle);
+  }
+  .video-cta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(46,107,158,0.1);
+  }
+  .video-cta-note {
+    font-size: 0.8rem;
+    color: var(--subtle);
+    max-width: 460px;
+    line-height: 1.65;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left  { animation: fadeUp 0.8s ease forwards; }
+  .hero-visual { animation: fadeUp 1s ease 0.2s both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Parkinson<span>Life</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Applications</a></li>
+    <li><a href="#">Research</a></li>
+    <li><a href="#">Resources</a></li>
+    <li><a href="#">Contribute</a></li>
+  </ul>
+</nav>
+
+<section class="hero container">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Science-First · Evidence-Based</div>
+    <h1>Living Better with<br><em>Parkinson's Disease</em></h1>
+    <p class="hero-body">
+      ParkinsonLife is a curated digital hub built for patients, caregivers, and clinicians — providing scientifically vetted tools, peer-reviewed research, and trusted connections to the Parkinson's community.
+    </p>
+    <div class="cta-group">
+      <a href="#" class="btn-primary">Explore Applications</a>
+      <a href="#" class="btn-secondary">Browse Research →</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="circle-outer">
+      <div class="orbit-dot"></div>
+      <div class="orbit-dot orbit-dot-2"></div>
+    </div>
+    <div class="circle-inner"></div>
+    <div class="circle-core"></div>
+    <div class="hero-label">
+      <div class="hero-label-main">Parkinson<span style="color:var(--gold)">Life</span></div>
+      <div class="hero-label-sub">Knowledge Hub</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section class="mission container">
+  <div class="section-label">Our Mission</div>
+  <p class="mission-text">
+    We believe that <strong>access to accurate, scientifically grounded information</strong> is itself a form of treatment. Every tool, article, and resource on this platform is reviewed against current research — because people living with Parkinson's deserve better than rumors, anecdotes, and forum noise.
+  </p>
+</section>
+
+<hr class="divider">
+
+<section class="apps-section container">
+  <div class="section-header">
+    <h2 class="section-title">Applications &amp; Tools</h2>
+  </div>
+  <div class="apps-grid">
+
+    <div class="app-card">
+      <div class="app-tag">Nutrition</div>
+      <div class="app-name">Parkinson's Diet</div>
+      <p class="app-desc">Evidence-based dietary guidance tailored to the metabolic and medication needs of Parkinson's patients — from protein timing to neuroprotective foods.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-tag">Voice Therapy</div>
+      <div class="app-name">Parky</div>
+      <p class="app-desc">An AI-assisted voice therapy companion designed to support the speech and vocal exercises commonly prescribed for Parkinson's-related hypophonia and dysarthria.</p>
+      <span class="badge-dev">In Development</span>
+    </div>
+
+    <div class="app-card">
+      <div class="app-tag">Research</div>
+      <div class="app-name">Research Library</div>
+      <p class="app-desc">Curated peer-reviewed papers and clinical studies, organized by topic — from genetics and biomarkers to motor therapy and quality-of-life outcomes.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-tag">Organizations</div>
+      <div class="app-name">Major PD Groups</div>
+      <p class="app-desc">Direct links to the world's leading Parkinson's disease foundations, advocacy organizations, and research consortia — vetted and kept current.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-tag">Directory</div>
+      <div class="app-name">Support Groups</div>
+      <p class="app-desc">Links to regional and online support communities, contributed by the Parkinson's community and reviewed for relevance and accuracy.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-tag">Excellence</div>
+      <div class="app-name">Centers of Excellence</div>
+      <p class="app-desc">A curated directory of top-tier Parkinson's treatment centers — where to find specialized neurologists, movement disorder clinics, and clinical trials.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-tag">Video Library</div>
+      <div class="app-name">Videos</div>
+      <p class="app-desc">Curated video content from leading neurologists, movement disorder specialists, researchers, and patient advocates — all reviewed for scientific accuracy before listing.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="pillars container">
+  <div class="pillar-text">
+    <div class="section-label">Why ParkinsonLife</div>
+    <h2 class="section-title" style="margin-bottom:1.2rem;">Built on rigor,<br><em style="font-style:italic; color:var(--sky);">not noise.</em></h2>
+    <p>There is no shortage of Parkinson's content online. There is a significant shortage of content that has been reviewed for accuracy, grounded in current science, and organized for practical use.</p>
+    <p>ParkinsonLife is <em>not</em> a Facebook group. It is a structured, maintained platform where every resource — every link, paper, and application — meets a scientific standard before it reaches you.</p>
+  </div>
+  <div>
+    <div class="section-label" style="margin-bottom:1rem;">What sets us apart</div>
+    <ul class="pillar-list">
+      <li>
+        <div>
+          <strong>Science Review Standard</strong>
+          All content is evaluated against peer-reviewed literature before publication.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Clinician Contributions</strong>
+          Medical professionals can submit and publish vetted information directly.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>No Opinion Threads</strong>
+          This is a reference platform — structured, navigable, and reliable.
+        </div>
+      </li>
+      <li>
+        <div>
+          <strong>Community Contributed, Editorially Reviewed</strong>
+          Community links and support listings are welcomed, then verified.
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VIDEO SECTION -->
+<section class="video-section container">
+  <div class="section-header">
+    <div>
+      <div class="section-label" style="margin-bottom:0.5rem;">Video Library</div>
+      <h2 class="section-title">Parkinson's on Video</h2>
+    </div>
+    <a href="#" class="btn-secondary" style="white-space:nowrap;">View All Videos →</a>
+  </div>
+
+  <div class="video-grid">
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn"></div>
+      </div>
+      <div class="video-info">
+        <span class="video-category">Motor Symptoms</span>
+        <div class="video-title">Understanding Tremor vs. Dyskinesia</div>
+        <div class="video-meta">Movement Disorder Specialist · 18 min</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn"></div>
+      </div>
+      <div class="video-info">
+        <span class="video-category">Nutrition</span>
+        <div class="video-title">Protein Timing &amp; Levodopa Absorption</div>
+        <div class="video-meta">Clinical Dietitian · 22 min</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn"></div>
+      </div>
+      <div class="video-info">
+        <span class="video-category">Voice Therapy</span>
+        <div class="video-title">LSVT LOUD: What the Research Shows</div>
+        <div class="video-meta">Speech-Language Pathologist · 15 min</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn"></div>
+      </div>
+      <div class="video-info">
+        <span class="video-category">Dysautonomia</span>
+        <div class="video-title">Autonomic Dysfunction in Parkinson's</div>
+        <div class="video-meta">Neurologist · 28 min</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn"></div>
+      </div>
+      <div class="video-info">
+        <span class="video-category">Exercise</span>
+        <div class="video-title">Neuroprotective Exercise: Current Evidence</div>
+        <div class="video-meta">Physical Therapist · 20 min</div>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-thumb">
+        <div class="play-btn"></div>
+      </div>
+      <div class="video-info">
+        <span class="video-category">Caregiving</span>
+        <div class="video-title">Supporting a Loved One: A Caregiver's Guide</div>
+        <div class="video-meta">Social Worker &amp; Caregiver Panel · 35 min</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="video-cta-row">
+    <p class="video-cta-note">
+      All videos are reviewed for scientific accuracy before being listed. If you are a clinician, researcher, or specialist who would like to contribute video content, please reach out.
+    </p>
+    <a href="mailto:parkinson@adcriskhorizon.com" class="btn-primary">Submit a Video</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- NONPROFIT + GOVERNANCE -->
+<section class="nonprofit container">
+  <div class="nonprofit-left">
+    <div class="section-label">Organization</div>
+    <h2>A Nonprofit Built<br>for the Community</h2>
+    <p>
+      ParkinsonLife is being established as a nonprofit organization, governed by a volunteer board of directors. Our structure ensures that the platform remains free from commercial influence, advertising, and the incentives that so often compromise health information online.
+    </p>
+    <p>
+      Every decision — from which applications to build to which research to feature — is guided by a single question: <em>does this genuinely serve people affected by Parkinson's disease?</em>
+    </p>
+    <p>
+      We are currently in the process of forming our founding board and recruiting volunteers across multiple disciplines. If you share this mission, we want to hear from you.
+    </p>
+  </div>
+  <div>
+    <div class="board-block">
+      <div class="board-block-label">Board &amp; Volunteer Roles Being Filled</div>
+      <ul class="board-roles">
+        <li>
+          <span class="role-icon">◆</span>
+          <div><strong>Board Directors</strong>Governance, strategy, and organizational oversight</div>
+        </li>
+        <li>
+          <span class="role-icon">◆</span>
+          <div><strong>Medical &amp; Scientific Reviewers</strong>Content accuracy and clinical validation</div>
+        </li>
+        <li>
+          <span class="role-icon">◆</span>
+          <div><strong>Technology Contributors</strong>Application development and infrastructure</div>
+        </li>
+        <li>
+          <span class="role-icon">◆</span>
+          <div><strong>Content &amp; Research Editors</strong>Curation of research papers and resources</div>
+        </li>
+        <li>
+          <span class="role-icon">◆</span>
+          <div><strong>Community Liaisons</strong>Connections to support groups and PD centers</div>
+        </li>
+        <li>
+          <span class="role-icon">◆</span>
+          <div><strong>Caregivers &amp; Patient Advocates</strong>Lived experience guiding every decision</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- VOLUNTEER CTA -->
+<div class="volunteer container">
+  <div class="volunteer-inner">
+    <div>
+      <h2 class="volunteer-title">Join Us as a Volunteer</h2>
+      <p class="volunteer-body">
+        ParkinsonLife is built entirely through community dedication. We are actively recruiting volunteers to support our applications, content review, research curation, and organizational development. Whether you are a caregiver, a clinician, a researcher, a technologist, or simply someone who believes in this mission — there is a role for you here.
+      </p>
+      <div class="volunteer-tags">
+        <span class="tag">Caregivers</span>
+        <span class="tag">Clinicians</span>
+        <span class="tag">Researchers</span>
+        <span class="tag">Developers</span>
+        <span class="tag">Support Group Leaders</span>
+        <span class="tag">Medical Professionals</span>
+        <span class="tag">Content Writers</span>
+      </div>
+    </div>
+    <div class="volunteer-cta">
+      <a href="mailto:parkinson@adcriskhorizon.com" class="btn-primary">Express Interest</a>
+      <a href="mailto:parkinson@adcriskhorizon.com" class="email-link">parkinson@adcriskhorizon.com</a>
+      <p class="caregiver-note">Caregivers especially<br>encouraged to reach out</p>
+    </div>
+  </div>
+</div>
+
+<!-- CONTRIBUTE -->
+<div class="contribute container">
+  <h2 class="contribute-title">Contribute Content or Resources</h2>
+  <p class="contribute-body">
+    If you are a medical professional who would like your information published on this site, a researcher with papers to share, or a community member with links to support groups and Parkinson's centers of excellence — we welcome your contributions. All submissions are reviewed for scientific accuracy before publication.
+  </p>
+  <div class="contribute-items">
+    <span class="tag">Research Articles</span>
+    <span class="tag">Support Group Links</span>
+    <span class="tag">Centers of Excellence</span>
+    <span class="tag">Medical Professional Profiles</span>
+  </div>
+  <a href="mailto:parkinson@adcriskhorizon.com" class="btn-primary">Get in Touch</a>
+</div>
+
+<section style="border-top:1px solid rgba(46,107,158,0.12); padding:4rem 2.5rem; position:relative; z-index:1; max-width:960px; margin:0 auto;">
+
+  <!-- Header row -->
+  <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:2rem; margin-bottom:2.5rem;">
+    <div>
+      <div class="section-label" style="margin-bottom:0.8rem;">Built &amp; Maintained By</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:400; color:var(--white);">
+        <a href="https://www.adcriskhorizon.com" target="_blank" style="color:var(--white); text-decoration:none; border-bottom:1px solid rgba(160,114,42,0.4); padding-bottom:2px;">ADC Risk Horizon</a>
+      </div>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; align-self:flex-end;">
+      <span class="tag">100% Volunteer Effort</span>
+      <span class="tag">AWS Infrastructure</span>
+      <span class="tag">Production-Grade Security</span>
+      <span class="tag">No Commercial Funding</span>
+    </div>
+  </div>
+
+  <!-- Three content cards -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.5px; background:rgba(46,107,158,0.1); border:1px solid rgba(46,107,158,0.1); margin-bottom:2.5rem;">
+
+    <!-- Who we are -->
+    <div style="background:var(--deep); padding:2rem;">
+      <div style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.9rem;">Who We Are</div>
+      <p style="font-size:0.83rem; color:var(--subtle); line-height:1.8;">
+        ADC Risk Horizon is <strong style="color:var(--mist);">not composed of medical professionals.</strong> We are technologists and business practitioners with deep, long-standing experience working alongside clinicians, researchers, and healthcare organizations in the Parkinson's space. Our role is to build, maintain, and connect — not to diagnose or prescribe.
+      </p>
+    </div>
+
+    <!-- Our knowledge -->
+    <div style="background:var(--deep); padding:2rem;">
+      <div style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.9rem;">Our Knowledge Base</div>
+      <p style="font-size:0.83rem; color:var(--subtle); line-height:1.8;">
+        What we bring is a substantial working knowledge of Parkinson's Disease — its science, its systems, its research landscape, and its human cost — developed over more than a decade of direct involvement. All medical and clinical content on this platform is reviewed by qualified professionals before publication.
+      </p>
+    </div>
+
+    <!-- The vision -->
+    <div style="background:var(--deep); padding:2rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; right:0; width:3px; height:100%; background:linear-gradient(to bottom, var(--gold), transparent);"></div>
+      <div style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.9rem;">The Vision</div>
+      <p style="font-size:0.83rem; color:var(--subtle); line-height:1.8;">
+        To promote accurate information, build genuinely useful applications, and pass on technical and business expertise — especially to students still in college or university who want to do meaningful work in healthcare technology.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Founder story -->
+  <div style="border:1px solid rgba(46,107,158,0.15); background:rgba(237,232,225,0.6); padding:2.5rem; display:grid; grid-template-columns:auto 1fr; gap:2.5rem; align-items:start;">
+    <div style="text-align:center; flex-shrink:0;">
+      <div style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(160,114,42,0.35); background:radial-gradient(circle, rgba(160,114,42,0.1) 0%, transparent 70%); display:flex; align-items:center; justify-content:center; margin:0 auto 0.7rem;">
+        <span style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; color:var(--gold);">♦</span>
+      </div>
+      <div style="font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--subtle); white-space:nowrap;">Founder</div>
+      <div style="font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(160,114,42,0.7); margin-top:0.3rem; white-space:nowrap;">11 Years with PD</div>
+    </div>
+    <div>
+      <div style="font-size:0.62rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); margin-bottom:0.8rem;">A Personal Note</div>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:300; color:var(--mist); line-height:1.7; margin-bottom:0.9rem;">
+        "The founder of ADC Risk Horizon was diagnosed with Parkinson's Dysautonomia eleven years ago. ParkinsonLife was born from that experience — from the frustration of navigating a landscape full of noise, misinformation, and fragmented resources."
+      </p>
+      <p style="font-size:0.83rem; color:var(--subtle); line-height:1.8;">
+        His vision extends beyond the platform itself: to mentor the next generation of technologists and business leaders — particularly those still in college or university — by giving them real, meaningful work on a project that genuinely matters. If that resonates with you, we want to hear from you.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<div class="platform-status">
+  <div class="platform-status-inner">
+
+    <div class="platform-status-header">
+      <div class="platform-status-title">
+        Platform Status
+      </div>
+      <span class="overall-status-pill">
+        <span class="pulse"></span>All Systems Operational
+      </span>
+    </div>
+
+    <div class="status-grid">
+
+      <div class="status-card">
+        <div class="status-card-top">
+          <span class="status-card-label">Application Layer</span>
+          <span class="status-indicator green"><span class="status-dot green"></span>Operational</span>
+        </div>
+        <div class="status-card-value">100%</div>
+        <div class="status-card-sub">Uptime · Last 30 days</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-card-top">
+          <span class="status-card-label">Global Distribution</span>
+          <span class="status-indicator blue"><span class="status-dot blue"></span>Active</span>
+        </div>
+        <div class="status-card-value">Multi-Region</div>
+        <div class="status-card-sub">AWS · Load Balanced</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-card-top">
+          <span class="status-card-label">Security Layer</span>
+          <span class="status-indicator green"><span class="status-dot green"></span>Secured</span>
+        </div>
+        <div class="status-card-value">Enterprise</div>
+        <div class="status-card-sub">TLS · WAF · DDoS Protection</div>
+      </div>
+
+      <div class="status-card">
+        <div class="status-card-top">
+          <span class="status-card-label">Monitoring</span>
+          <span class="status-indicator gold"><span class="status-dot gold"></span>Live</span>
+        </div>
+        <div class="status-card-value">24 / 7</div>
+        <div class="status-card-sub">Production-Grade Alerting</div>
+      </div>
+
+    </div>
+
+    <div class="status-infra-row">
+      <span class="status-infra-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Hosted on AWS
+      </span>
+      <span class="status-infra-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Global CDN · Edge Caching
+      </span>
+      <span class="status-infra-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        End-to-End Encrypted
+      </span>
+      <span class="status-infra-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Real-Time Health Checks
+      </span>
+      <span class="status-infra-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Volunteer-Operated · Non-Commercial
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div style="display:flex; flex-direction:column; gap:0.4rem;">
+    <span class="footer-note">© 2026 ParkinsonLife &nbsp;·&nbsp; Nonprofit Organization (Pending) &nbsp;·&nbsp; All content reviewed for scientific accuracy</span>
+    <span class="footer-note">Built &amp; maintained entirely on a volunteer basis by <a href="https://www.adcriskhorizon.com" target="_blank" style="color:var(--sky); text-decoration:none; border-bottom:1px solid rgba(46,107,158,0.3);">ADC Risk Horizon</a></span>
+  </div>
+  <span class="footer-badge">Evidence-Based</span>
+</footer>
+
+</body>
+</html>

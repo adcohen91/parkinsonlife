@@ -7,6 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 APP="parkinsonlife"
+ALB_NAME="${APP}-alb"
 REGION="${AWS_REGION:-us-east-1}"
 ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
 ECR_REPO="${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${APP}"
@@ -60,6 +61,8 @@ if [ "$ALB_SG" = "None" ] || [ -z "$ALB_SG" ]; then
     --query "GroupId" --output text)
   aws ec2 authorize-security-group-ingress --region "$REGION" \
     --group-id "$ALB_SG" --protocol tcp --port 80 --cidr 0.0.0.0/0 >/dev/null
+  aws ec2 authorize-security-group-ingress --region "$REGION" \
+    --group-id "$ALB_SG" --protocol tcp --port 443 --cidr 0.0.0.0/0 >/dev/null
   echo "    Created ALB SG: ${ALB_SG}"
 else
   echo "    ALB SG exists: ${ALB_SG}"
@@ -155,11 +158,11 @@ echo "==> Ensuring Application Load Balancer..."
 SUBNET_LIST=$(echo "$SUBNET_IDS" | tr ',' ' ')
 
 ALB_ARN=$(aws elbv2 describe-load-balancers --region "$REGION" \
-  --names "$APP" --query "LoadBalancers[0].LoadBalancerArn" --output text 2>/dev/null || echo "None")
+  --names "$ALB_NAME" --query "LoadBalancers[0].LoadBalancerArn" --output text 2>/dev/null || echo "None")
 
 if [ "$ALB_ARN" = "None" ] || [ -z "$ALB_ARN" ]; then
   ALB_ARN=$(aws elbv2 create-load-balancer --region "$REGION" \
-    --name "$APP" \
+    --name "$ALB_NAME" \
     --subnets $SUBNET_LIST \
     --security-groups "$ALB_SG" \
     --scheme internet-facing \
